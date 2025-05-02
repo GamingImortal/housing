@@ -6,8 +6,14 @@ import HomePage from "./routes/HomePage";
 const App = () => {
   return (
     <>
-      <Navbar />
-      <HomePage />
+      <div className="layout">
+        <div className="navbar">
+          <Navbar />
+        </div>
+        <div className="content">
+          <HomePage />
+        </div>
+      </div>
     </>
   );
 };

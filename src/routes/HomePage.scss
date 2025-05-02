@@ -1,0 +1,19 @@
+.homepage {
+  display: flex;
+  height: 100vh;
+
+  .textContainer {
+    flex: 3;
+  }
+  .imageContainer {
+    flex: 2;
+
+    img {
+      width: 100hv;
+      height: 100%;
+      position: fixed;
+      border-radius: 2%;
+      z-index: -5;
+    }
+  }
+}
