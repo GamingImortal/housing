@@ -1,0 +1,114 @@
+@import "../../responsive.scss";
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+nav {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  align-items: center;
+
+  a {
+    transition: all 4s ease;
+
+    &:hover {
+      scale: 1.05;
+      color: orange;
+    }
+    @include sm {
+      display: none;
+    }
+  }
+
+  .left {
+    flex: 3;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      img {
+        width: 50px;
+        animation: rotate 10s linear infinite;
+      }
+      span {
+        @include md {
+          display: none;
+        }
+        @include sm {
+          display: initial;
+        }
+      }
+    }
+  }
+
+  .right {
+    flex: 2;
+    gap: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  a {
+    padding: 12px 24px;
+    margin: 20px;
+
+    @include md {
+      background-color: transparent;
+      padding: 1px 4px;
+      margin: 10px;
+    }
+  }
+  .register {
+    background-color: #fece51;
+  }
+  .menuIcon {
+    display: none;
+    cursor: pointer;
+    @include sm {
+      display: inline;
+      cursor: pointer;
+      z-index: 6;
+    }
+  }
+  .menu {
+    position: fixed;
+    background-color: blue;
+    color: white;
+    top: 0;
+    right: -50%;
+    height: 100%;
+    width: 50%;
+    transition: right 2s ease;
+    z-index: 5;
+    display: none;
+
+    @include sm {
+      display: initial;
+    }
+
+    &.active {
+      right: 0;
+      border-radius: 2%;
+
+      a {
+        z-index: 6;
+        display: flex;
+        flex-direction: column;
+        margin-top: 40%;
+        align-items: center;
+      }
+    }
+  }
+}
