@@ -1,6 +1,7 @@
 import React from "react";
 import "./HomePage.scss";
 import SearchBar from "../components/SearchBar/SearchBar";
+import { orange } from "@mui/material/colors";
 
 export default function HomePage() {
   return (
@@ -9,8 +10,8 @@ export default function HomePage() {
         <br></br>
         <br></br>
         <h1>Find Off Campus Accomodation & Rent your dream place</h1>
-        <br></br>{" "}
-        <p>
+        <br></br> <br></br>
+        <p style={{ color: "orange " }}>
           Check out and book our various listed houses with suitable living
           conditions for students
         </p>

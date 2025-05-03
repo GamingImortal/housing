@@ -1,3 +1,5 @@
+@import "../responsive.scss";
+
 .homepage {
   display: flex;
   height: 100vh;
@@ -7,6 +9,10 @@
   }
   .imageContainer {
     flex: 2;
+
+    @include sm {
+      display: none;
+    }
 
     img {
       width: 100hv;
