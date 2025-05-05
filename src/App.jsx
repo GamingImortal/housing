@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./routes/homePage/HomePage";
 import Layout from "./routes/layout/layout";
 import ListPage from "./routes/listPage/listPage";
+import { SinglePage } from "./routes/singlePage/SinglePage";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -19,6 +20,10 @@ const App = () => {
         {
           path: "/list",
           element: <ListPage />,
+        },
+        {
+          path: "/:id",
+          element: <SinglePage />,
         },
       ],
     },
