@@ -1,0 +1,30 @@
+.card {
+  display: flex;
+  gap: 20px;
+
+  .textContainer {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+
+    .price {
+      border-radius: 2px;
+      background-color: orange;
+      width: max-content;
+    }
+  }
+
+  .imageContainer {
+    flex: 3;
+    height: 180px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.popContainer {
+  display: flex;
+
+  img {
+    width: 64px;
+    height: 48px;
+  }
+}
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

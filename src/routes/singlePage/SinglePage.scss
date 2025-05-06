@@ -1,0 +1,70 @@
+.singlePage {
+  display: flex;
+  height: 100vh;
+  .details {
+    flex: 3;
+    .wrapper {
+      padding-left: 50px;
+
+      .info {
+        margin-top: 50px;
+        .top {
+          display: flex;
+          justify-content: space-between;
+          .post {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            h1 {
+              font-weight: 400;
+            }
+            .address {
+              display: flex;
+              gap: 5px;
+              align-items: center;
+              color: orange;
+              font-size: smaller;
+            }
+            .price {
+              padding: 5px;
+              background-color: orange;
+              border-radius: 5px;
+              width: max-content;
+            }
+          }
+          .user {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            align-items: center;
+            justify-content: center;
+            padding: 0px 50px;
+            background-color: rgb(243, 243, 160);
+            font-weight: 600;
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+
+            img {
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              object-fit: cover;
+            }
+          }
+        }
+        .bottom {
+          margin-top: 50px;
+          color: rgb(163, 119, 38);
+          height: 20px;
+        }
+      }
+    }
+  }
+  .features {
+    flex: 2;
+    .wrapper {
+      padding: 0px 20px;
+    }
+  }
+}
