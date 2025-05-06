@@ -4,6 +4,41 @@
   display: flex;
   gap: 20px;
 
+  .fullSlider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: orange;
+    display: flex;
+
+    .arrow {
+      margin-top: 50%;
+      padding: 25px;
+      flex: 1;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .close {
+      top: 0;
+      right: 0;
+      font-size: 1cm;
+      cursor: pointer;
+      transition: 5s ease-out;
+    }
+    imageContainer {
+      flex: 10;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
   img {
     width: 100%;
     height: 100%;
