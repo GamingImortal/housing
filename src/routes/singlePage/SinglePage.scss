@@ -3,6 +3,7 @@
   height: 100vh;
   .details {
     flex: 3;
+    min-width: 0;
     .wrapper {
       padding-left: 50px;
 
@@ -54,6 +55,7 @@
           }
         }
         .bottom {
+          overflow-y: auto;
           margin-top: 50px;
           color: rgb(163, 119, 38);
           height: 20px;
@@ -63,8 +65,70 @@
   }
   .features {
     flex: 2;
+    min-width: 0;
+    overflow-y: auto;
     .wrapper {
+      overflow-y: auto;
       padding: 0px 20px;
+      display: flex;
+      flex-direction: column;
+      padding-left: 50px;
+
+      .location {
+        padding-top: 5px;
+        font-family: fantasy;
+      }
+      .general {
+        padding-bottom: 20px;
+        font-family: fantasy;
+      }
+
+      .title {
+      }
+
+      .listVertical {
+        border: 1px solid rgb(145, 110, 46);
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        color: rgb(88, 105, 47);
+      }
+
+      .service {
+        font-family: fantasy;
+        margin-top: 20px;
+      }
+      .services {
+        overflow-y: auto;
+        margin-top: 10px;
+        border: 1px solid rgb(145, 110, 46);
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        color: rgb(88, 105, 47);
+      }
+      .mapContainer {
+        width: 100%;
+        cursor: pointer;
+        height: 450px;
+        position: relative;
+      }
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+
+        .outlined {
+          background-color: none;
+          border: 1px solid orange;
+          color: orange;
+        }
+      }
     }
   }
 }
