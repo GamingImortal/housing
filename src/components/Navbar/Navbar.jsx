@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
 import "./navbar.scss";
 import { orange } from "@mui/material/colors";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
+  const user = true;
 
   return (
     <nav>
@@ -21,10 +23,23 @@ function Navbar() {
       </div>
 
       <div className="right">
-        <a href="">signIn</a>
-        <a href="">
-          <Button variant="outlined">signUp</Button>
-        </a>
+  {user ? (
+    <div className="user">
+      <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=600" alt="User Avatar" />
+      <span>Hove Nelius</span>
+      <Link to ="/profile" className="profile">
+      <div className ="notification"> 3</div>
+      <span>Profile</span>
+      </Link>
+    </div>
+  ) : (
+    <>
+      <a href="/">Sign In</a>
+      <a href="/" className="register">Sign Up</a>
+    </>
+  )}
+
+
         <div className="menuIcon">
           <MenuIcon onClick={() => setOpen(!open)}></MenuIcon>
         </div>

@@ -4,7 +4,7 @@ import HomePage from "./routes/homePage/HomePage";
 import Layout from "./routes/layout/layout";
 import ListPage from "./routes/listPage/listPage";
 import { SinglePage } from "./routes/singlePage/SinglePage";
-
+import ProfilePage from "./routes/profilePage/profilePage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const App = () => {
@@ -22,10 +22,15 @@ const App = () => {
           element: <ListPage />,
         },
         {
+          path: "/profile",
+          element: <ProfilePage />,
+        },
+        {
           path: "/:id",
           element: <SinglePage />,
         },
       ],
+      
     },
   ]);
 
