@@ -1,6 +1,7 @@
 import React from "react";
 import Filter from "../../components/Filter/Filter";
 import "./listPage.scss";
+import List from "../../components/list/list";
 import Card from "../../components/card/Card";
 import Map from "../../components/map/Map";
 
