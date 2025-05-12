@@ -1,0 +1,31 @@
+.register {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  .signup {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      justify-content: center;
+      align-items: center;
+
+      input {
+        justify-content: center;
+        border: 1px solid blue;
+        height: 30px;
+        border-radius: 5px;
+      }
+      button {
+        border: 1px solid blue;
+        border-radius: 5px;
+        width: 100px;
+      }
+    }
+  }
+}
