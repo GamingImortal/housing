@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import "./Register.scss";
 import { Button } from "@mui/material";
 import axios from "axios";
+import apiRequest from "../../lib/apiRequest";
 
 const Login = () => {
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
     const formData = new FormData(e.target);
 
@@ -17,14 +19,15 @@ const Login = () => {
     const password = formData.get("password");
 
     try {
-      const res = await axios.post("http://localhost:8800/api/auth/register", {
+      const res = await apiRequest.post("/auth/register", {
         username,
         email,
 
         password,
       });
-    } catch (err) {
       console.log(res.data);
+    } catch (err) {
+      setError(err.response.data.message);
     }
   };
 
@@ -36,12 +39,13 @@ const Login = () => {
           <input type="text" required name="email" placeholder="email" />
 
           <input
-            type="text"
+            type="password"
             required
-            name="Enter password"
+            name="password"
             placeholder="password"
           />
           <button>Submit</button>
+          {error && <span>{error}</span>}
         </form>
       </div>
     </div>

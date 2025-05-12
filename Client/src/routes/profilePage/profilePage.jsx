@@ -1,6 +1,8 @@
 import List from "../../components/list/list";
 import "./profilePage.scss";
 import Chat from "../../components/chat/chat";
+import apiRequest from "../../lib/apiRequest";
+import { useNavigate } from "react-router-dom";
 
 function ProfilePage() {
   const data = [
@@ -108,6 +110,19 @@ function ProfilePage() {
       longitude: 31.049,
     },
   ];
+
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      const res = apiRequest.post("/auth/logout");
+      localStorage.removeItem("user");
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="profilepage">
       <div className="details">
@@ -130,6 +145,7 @@ function ProfilePage() {
             <span>
               E-mail: <b>nellyhove@gmail.com</b>
             </span>
+            <button onClick={handleLogout}>Logout</button>
           </div>
 
           <div className="title">

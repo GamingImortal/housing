@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./HomePage.scss";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { orange } from "@mui/material/colors";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function HomePage() {
+  const { currentUser } = useContext(AuthContext);
+
+  console.log(currentUser);
   return (
     <div className="homepage">
       <div className="textContainer">
