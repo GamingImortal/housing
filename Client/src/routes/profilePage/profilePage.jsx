@@ -3,6 +3,9 @@ import "./profilePage.scss";
 import Chat from "../../components/chat/chat";
 import apiRequest from "../../lib/apiRequest";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { useEffect } from "react";
 
 function ProfilePage() {
   const data = [
@@ -111,11 +114,20 @@ function ProfilePage() {
     },
   ];
 
+  const { updateUser, currentUser } = useContext(AuthContext);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate("/login");
+    }
+  }, [currentUser, navigate]);
 
   const handleLogout = async () => {
     try {
-      const res = apiRequest.post("/auth/logout");
+      apiRequest.post("/auth/logout");
+      updateUser(null);
       localStorage.removeItem("user");
       navigate("/");
     } catch (err) {
@@ -124,46 +136,51 @@ function ProfilePage() {
   };
 
   return (
-    <div className="profilepage">
-      <div className="details">
-        <div className="wrapper">
-          <div className="title">
-            <h1>User Information</h1>
-            <button> Update Profile</button>
-          </div>
-          <div className="info">
-            <span>
-              Avatar:{" "}
-              <img
-                src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=600"
-                alt="User Avatar"
-              />
-            </span>
-            <span>
-              Username: <b>Hove Nelius</b>
-            </span>
-            <span>
-              E-mail: <b>nellyhove@gmail.com</b>
-            </span>
-            <button onClick={handleLogout}>Logout</button>
-          </div>
+    currentUser && (
+      <div className="profilepage">
+        <div className="details">
+          <div className="wrapper">
+            <div className="title">
+              <h1>User Information</h1>
+              <button> Update Profile</button>
+            </div>
+            <div className="info">
+              <span>
+                Avatar:{" "}
+                <img
+                  src={
+                    currentUser.avatar ||
+                    "https://cdn3.iconfinder.com/data/icons/web-design-and-development-2-6/512/87-1024.png"
+                  }
+                  alt="User Avatar"
+                />
+              </span>
+              <span>
+                Username: <b>currentUser.username</b>
+              </span>
+              <span>
+                E-mail: <b>currentUser.email</b>
+              </span>
+              <button onClick={handleLogout}>Logout</button>
+            </div>
 
-          <div className="title">
-            <h1>My List</h1>
-            <button> Create New List</button>
-          </div>
+            <div className="title">
+              <h1>My List</h1>
+              <button> Create New List</button>
+            </div>
 
-          <List data={data} />
-          <div className="title">
-            <h1>Saved List</h1>
+            <List data={data} />
+            <div className="title">
+              <h1>Saved List</h1>
+            </div>
           </div>
         </div>
+        <div className="chatContainer">
+          <div className="wrapper"></div>
+          <Chat />
+        </div>
       </div>
-      <div className="chatContainer">
-        <div className="wrapper"></div>
-        <Chat />
-      </div>
-    </div>
+    )
   );
 }
 

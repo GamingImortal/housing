@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Login.scss";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import apiRequest from "../../lib/apiRequest";
 import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
 
 const Login = () => {
   const [error, setError] = useState("");
   const [isloading, setloading] = useState(false);
+
+  const { updateUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -28,7 +31,7 @@ const Login = () => {
 
         password,
       });
-      localStorage.setItem("user", JSON.stringify(res.data));
+      updateUser(res.data);
       navigate("/");
     } catch (err) {
       setError(err.response.data.message);

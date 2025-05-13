@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-
+import { AuthContext } from "../../context/AuthContext";
+import { useContext } from "react";
 import "./navbar.scss";
 import { orange } from "@mui/material/colors";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
-  const user = true;
+
+  const { currentUser } = useContext(AuthContext);
 
   return (
     <nav>
@@ -23,13 +25,16 @@ function Navbar() {
       </div>
 
       <div className="right">
-        {user ? (
+        {currentUser ? (
           <div className="user">
             <img
-              src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=600"
+              src={
+                currentUser.avatar ||
+                "https://cdn3.iconfinder.com/data/icons/web-design-and-development-2-6/512/87-1024.png"
+              }
               alt="User Avatar"
             />
-            <span>Hove Nelius</span>
+            <span>{currentUser.username}</span>
             <Link to="/profile" className="profile">
               <div className="notification"> 3</div>
               <span>Profile</span>
@@ -37,9 +42,8 @@ function Navbar() {
           </div>
         ) : (
           <>
-            <a href="/">Sign In</a>
-            <a href="/" className="register">
-              Sign Up
+            <a href="/signin" className="register">
+              Sign In
             </a>
           </>
         )}
